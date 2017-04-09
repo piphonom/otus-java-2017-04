@@ -17,9 +17,10 @@ public class ObjectFootprintCalculator {
     * http://btoddb-java-sizing.blogspot.ru/
     * https://github.com/jbellis/jamm/blob/master/src/org/github/jamm/MemoryLayoutSpecification.java
     * */
+    /* Memory layout actual for x64 modern JVM */
     private final static int headerSize = 12;
     private final static int arrayHeaderSize = 16;
-    private final static int referenceSize = 4;
+    private final static int referenceSize = 4;     /* actual for -XX:+UseCompressedOops */
     private final static int paddingSize = 8;
     private final static int superFieldsPadding = 4;
 
