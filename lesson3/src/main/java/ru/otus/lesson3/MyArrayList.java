@@ -13,8 +13,10 @@ public class MyArrayList<E> implements List<E> {
     private Object[] storageArray;
     /* Explicit storageSize of internal array */
     private int storageSize = 0;
-    /* Number of elements in array */
+    /* Number of elements */
     private int refNumber = 0;
+    /* number of null elements */
+    private int refNullNumber = 0;
 
     MyArrayList() {
         this.storageSize = INITIAL_SIZE;
@@ -23,13 +25,19 @@ public class MyArrayList<E> implements List<E> {
 
     MyArrayList(int size) {
         if (size == 0) {
-            storageArray = new Object[INITIAL_SIZE];
+            storageSize = INITIAL_SIZE;
         } else if (size > Integer.MAX_VALUE) {
             storageSize = Integer.MAX_VALUE;
         } else {
             storageSize = size;
         }
         storageArray = new Object[storageSize];
+    }
+
+    MyArrayList(Collection<? extends E> c) {
+        storageSize = c.size();
+        storageArray = Arrays.copyOf(c.toArray(), storageSize);
+        refNumber = storageSize;
     }
 
     public int size() {
@@ -42,11 +50,13 @@ public class MyArrayList<E> implements List<E> {
 
     public boolean contains(Object o) {
         /* o==null ? e==null : o.equals(e) */
+        if (o == null)
+            return (refNullNumber == 0);
+        for (int i = 0; i < refNumber; i++) {
+            if (storageArray[i].equals(o))
+                return true;
+        }
         return false;
-    }
-
-    public Iterator<E> iterator() {
-        return new MyListIterator();
     }
 
     public Object[] toArray() {
@@ -64,17 +74,49 @@ public class MyArrayList<E> implements List<E> {
         }
     }
 
-    public boolean add(E e) {
-        if (refNumber == storageSize) {
+    private void increaseStorageIfNeeded(int numObjects) {
+        int neededCapacity = refNumber + numObjects;
+        if (neededCapacity > storageSize) {
             if (storageSize == Integer.MAX_VALUE)
-                throw new OutOfMemoryError("No memory for realloc");
+                throw new OutOfMemoryError("Unable to realloc memory");
             /* Need to increase the storageSize */
-            storageSize = (2 * storageSize) < Integer.MAX_VALUE ? 2 * storageSize : Integer.MAX_VALUE;
-            storageArray = Arrays.copyOf(storageArray, storageSize);
+            long newSize = storageSize;
+            do {
+                newSize *= Math.min(2 * newSize, Integer.MAX_VALUE);
+                if (newSize == Integer.MAX_VALUE && neededCapacity > newSize)
+                    throw new OutOfMemoryError("Too many objects");;
+            } while (neededCapacity > newSize);
+            storageArray = Arrays.copyOf(storageArray, (int)newSize);
+            storageSize = (int)newSize;
         }
+    }
+
+    private void checkIndex(int index) {
+        if (index < 0)
+            throw new IndexOutOfBoundsException();
+        if (refNumber < index) {
+            throw new IndexOutOfBoundsException();
+        }
+    }
+
+    public boolean add(E e) {
+        increaseStorageIfNeeded(1);
         storageArray[refNumber++] = e;
+        if (e == null)
+            refNullNumber++;
 
         return false;
+    }
+
+    public void add(int index, E element) {
+        checkIndex(index);
+        increaseStorageIfNeeded(1);
+
+        System.arraycopy(storageArray, index, storageArray, index + 1, refNumber - index);
+        storageArray[index] = element;
+        refNumber++;
+        if (element == null)
+            refNullNumber++;
     }
 
     public boolean remove(Object o) {
@@ -86,16 +128,59 @@ public class MyArrayList<E> implements List<E> {
         return false;
     }
 
-    public boolean containsAll(Collection<?> c) {
-        return false;
+    public E remove(int index) {
+        checkIndex(index);
+        E removed = (E) storageArray[index];
+        refNumber--;
+        if (refNumber > 0) {
+            System.arraycopy(storageArray, index + 1, storageArray, index, refNumber - index);
+            storageArray[refNumber] = null;
+        }
+        if (removed == null)
+            refNullNumber--;
+
+        return removed;
     }
 
+    public boolean containsAll(Collection<?> c) {
+        if (c == null)
+            return false;
+        for (Object o : c) {
+            if (contains(o) == false)
+                return false;
+        }
+        return true;
+    }
+
+    /*
+    private boolean addAll(int index, Object[] objects) {
+        increaseStorageIfNeeded(objects.length);
+        // check for null ?????
+        System.arraycopy(objects, 0, storageArray, index, objects.length);
+        return true;
+    }
+    */
+
     public boolean addAll(Collection<? extends E> c) {
-        return false;
+
+        if (c == null)
+            return false;
+        //return addAll(refNumber, c.toArray());
+        for (E e : c) {
+            add(e);
+        }
+        return true;
     }
 
     public boolean addAll(int index, Collection<? extends E> c) {
-        return false;
+        if (c == null)
+            return false;
+        int i = index;
+        //return addAll(index, c.toArray());
+        for (E e : c) {
+            add(i++, e);
+        }
+        return true;
     }
 
     public boolean removeAll(Collection<?> c) {
@@ -107,39 +192,73 @@ public class MyArrayList<E> implements List<E> {
     }
 
     public void clear() {
-
+        for (int i = 0; i < refNumber; i++) {
+            storageArray[i] = null;
+        }
+        refNumber = refNullNumber = 0;
     }
 
     public E get(int index) {
-        return null;
+        checkIndex(index);
+
+        return (E)storageArray[index];
     }
 
     public E set(int index, E element) {
-        return null;
-    }
+        checkIndex(index);
 
-    public void add(int index, E element) {
-
-    }
-
-    public E remove(int index) {
-        return null;
+        E old = (E)storageArray[index];
+        storageArray[index] = element;
+        if (old == null && element != null)
+            refNullNumber--;
+        return old;
     }
 
     public int indexOf(Object o) {
-        return 0;
+        if (o == null) {
+            if (refNullNumber == 0) {
+                return -1;
+            }
+            for (int i = 0; i < refNumber; i++) {
+                if (storageArray[i] == null)
+                    return i;
+            }
+            return -1;
+        }
+        for (int i = 0; i < refNumber; i++) {
+            if (storageArray[i].equals(o))
+                return i;
+        }
+        return -1;
     }
 
     public int lastIndexOf(Object o) {
-        return 0;
+        if (o == null) {
+            if (refNullNumber == 0)
+                return -1;
+            for (int i = refNumber - 1; i >= 0; i--) {
+                if (storageArray[i] == null)
+                    return i;
+            }
+            return -1;
+        }
+        for (int i = refNumber - 1; i >= 0; i--) {
+            if (storageArray[i].equals(o))
+                return i;
+        }
+        return -1;
+    }
+
+    public Iterator<E> iterator() {
+        return new MyListIterator();
     }
 
     public ListIterator<E> listIterator() {
-        return null;
+        return new MyListIterator();
     }
 
     public ListIterator<E> listIterator(int index) {
-        return null;
+        return new MyListIterator(index);
     }
 
     public List<E> subList(int fromIndex, int toIndex) {
@@ -148,40 +267,82 @@ public class MyArrayList<E> implements List<E> {
 
     private class MyListIterator implements ListIterator<E> {
 
-        public boolean hasNext() {
-            return false;
+        private int cursor = 0;
+        private int cursorState = -1;
+
+        MyListIterator() {
+
         }
 
-        public E next() {
-            return null;
+        MyListIterator(int index) {
+            checkIndex(index);
+            cursor = index;
+        }
+
+        public boolean hasNext() {
+            if (cursor == refNumber)
+                return false;
+            return true;
         }
 
         public boolean hasPrevious() {
-            return false;
+            if (cursor == 0)
+                return false;
+            else
+                return true;
+        }
+
+        public E next() {
+            if (cursor == refNumber) {
+                cursorState = -1;
+                throw new NoSuchElementException();
+            }
+            cursorState = cursor;
+            return (E)storageArray[cursor++];
         }
 
         public E previous() {
-            return null;
+            if (cursor == 0) {
+                cursorState = -1;
+                throw new NoSuchElementException();
+            }
+            cursorState = --cursor;
+            return (E)storageArray[cursor];
         }
 
         public int nextIndex() {
-            return 0;
+            return cursor;
         }
 
         public int previousIndex() {
-            return 0;
+            return cursor - 1;
         }
 
         public void remove() {
-
+            if (cursorState != -1) {
+                MyArrayList.this.remove(cursorState);
+                cursorState = -1;
+            } else {
+                throw new IllegalStateException();
+            }
         }
 
         public void set(E e) {
-
+            if (cursorState != -1) {
+                MyArrayList.this.set(cursorState, e);
+                cursorState = -1;
+            } else {
+                throw new IllegalStateException();
+            }
         }
 
         public void add(E e) {
-
+            if (cursorState != -1) {
+                MyArrayList.this.add(e);
+                cursorState = -1;
+            } else {
+                throw new IllegalStateException();
+            }
         }
     }
 }
