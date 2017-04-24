@@ -19,7 +19,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws Exception {
         DateFormat dateFormat = new SimpleDateFormat("yy.MM.dd_HH:mm:ss");
-        Logger logger = GCLoggerFactory.getGCLogger("GCEventsLog_" +
+        Logger logger = GCLoggerFactory.getGCLogger("./logs/GCEventsLog_" +
                                                     dateFormat.format(Calendar.getInstance().getTime()) +
                                                     ".txt");
 
@@ -43,7 +43,7 @@ public class Main {
         ObjectName timeoutName = new ObjectName("ru.otus:type=SleepTimeout");
         mbs.registerMBean(sleepTimeoutBean, timeoutName);
 
-        chunkSizeBean.setSize(5_000_000);
+        chunkSizeBean.setSize(1_000_000);
         sleepTimeoutBean.setTimeout(10_000);
 
         BenchMark.run(chunkSizeBean, sleepTimeoutBean, logger);

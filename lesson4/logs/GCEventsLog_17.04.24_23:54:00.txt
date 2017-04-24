@@ -1,0 +1,60 @@
+DEBUG   [2017-04-24 23:54:00,779] - JVM run with explicitly specified Garbage Collectors: G1GC 
+DEBUG   [2017-04-24 23:54:00,780] - Registred listener for G1 Young Generation
+DEBUG   [2017-04-24 23:54:00,781] - Registred listener for G1 Old Generation
+DEBUG   [2017-04-24 23:54:00,852] - G1 Young Generation - last duration(ms): 36, total duration(ms): 36, number of calls: 1
+DEBUG   [2017-04-24 23:54:00,891] - G1 Young Generation - last duration(ms): 33, total duration(ms): 69, number of calls: 2
+DEBUG   [2017-04-24 23:54:00,894] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:54:11,046] - G1 Young Generation - last duration(ms): 75, total duration(ms): 144, number of calls: 3
+DEBUG   [2017-04-24 23:54:11,114] - G1 Young Generation - last duration(ms): 45, total duration(ms): 189, number of calls: 4
+DEBUG   [2017-04-24 23:54:11,161] - G1 Young Generation - last duration(ms): 36, total duration(ms): 225, number of calls: 5
+DEBUG   [2017-04-24 23:54:11,165] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:54:21,295] - G1 Young Generation - last duration(ms): 63, total duration(ms): 288, number of calls: 6
+DEBUG   [2017-04-24 23:54:21,309] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:54:31,428] - G1 Young Generation - last duration(ms): 68, total duration(ms): 356, number of calls: 7
+DEBUG   [2017-04-24 23:54:31,548] - G1 Young Generation - last duration(ms): 85, total duration(ms): 441, number of calls: 8
+DEBUG   [2017-04-24 23:54:31,553] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:54:41,662] - G1 Young Generation - last duration(ms): 68, total duration(ms): 509, number of calls: 9
+DEBUG   [2017-04-24 23:54:41,672] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:54:41,739] - G1 Young Generation - last duration(ms): 56, total duration(ms): 565, number of calls: 10
+DEBUG   [2017-04-24 23:54:51,812] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:55:02,010] - G1 Young Generation - last duration(ms): 183, total duration(ms): 748, number of calls: 11
+DEBUG   [2017-04-24 23:55:02,147] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:55:02,148] - G1 Young Generation - last duration(ms): 106, total duration(ms): 854, number of calls: 12
+DEBUG   [2017-04-24 23:55:02,189] - G1 Young Generation - last duration(ms): 34, total duration(ms): 888, number of calls: 13
+DEBUG   [2017-04-24 23:55:12,272] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:55:22,510] - G1 Young Generation - last duration(ms): 190, total duration(ms): 1078, number of calls: 14
+DEBUG   [2017-04-24 23:55:22,599] - G1 Young Generation - last duration(ms): 76, total duration(ms): 1154, number of calls: 15
+DEBUG   [2017-04-24 23:55:22,601] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:55:32,655] - G1 Young Generation - last duration(ms): 32, total duration(ms): 1186, number of calls: 16
+DEBUG   [2017-04-24 23:55:32,692] - G1 Young Generation - last duration(ms): 34, total duration(ms): 1220, number of calls: 17
+DEBUG   [2017-04-24 23:55:32,763] - G1 Young Generation - last duration(ms): 38, total duration(ms): 1258, number of calls: 18
+DEBUG   [2017-04-24 23:55:32,766] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:55:34,555] - G1 Young Generation - last duration(ms): 29, total duration(ms): 1287, number of calls: 19
+DEBUG   [2017-04-24 23:55:34,563] - G1 Old Generation - last duration(ms): 1422, total duration(ms): 1422, number of calls: 1
+DEBUG   [2017-04-24 23:55:44,690] - G1 Young Generation - last duration(ms): 102, total duration(ms): 1389, number of calls: 20
+DEBUG   [2017-04-24 23:55:45,054] - G1 Young Generation - last duration(ms): 316, total duration(ms): 1705, number of calls: 21
+DEBUG   [2017-04-24 23:55:46,686] - G1 Young Generation - last duration(ms): 332, total duration(ms): 2037, number of calls: 22
+DEBUG   [2017-04-24 23:55:46,687] - G1 Young Generation - last duration(ms): 3, total duration(ms): 2040, number of calls: 23
+DEBUG   [2017-04-24 23:55:46,688] - G1 Old Generation - last duration(ms): 1295, total duration(ms): 2717, number of calls: 2
+DEBUG   [2017-04-24 23:55:46,693] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:55:56,796] - G1 Young Generation - last duration(ms): 90, total duration(ms): 2130, number of calls: 24
+DEBUG   [2017-04-24 23:55:57,191] - G1 Young Generation - last duration(ms): 381, total duration(ms): 2511, number of calls: 25
+DEBUG   [2017-04-24 23:55:59,012] - G1 Young Generation - last duration(ms): 270, total duration(ms): 2781, number of calls: 26
+DEBUG   [2017-04-24 23:55:59,013] - G1 Young Generation - last duration(ms): 3, total duration(ms): 2784, number of calls: 27
+DEBUG   [2017-04-24 23:55:59,013] - G1 Old Generation - last duration(ms): 1546, total duration(ms): 4263, number of calls: 3
+DEBUG   [2017-04-24 23:56:01,003] - G1 Young Generation - last duration(ms): 397, total duration(ms): 3181, number of calls: 28
+DEBUG   [2017-04-24 23:56:01,004] - G1 Young Generation - last duration(ms): 3, total duration(ms): 3184, number of calls: 29
+DEBUG   [2017-04-24 23:56:02,498] - G1 Old Generation - last duration(ms): 1586, total duration(ms): 5849, number of calls: 4
+DEBUG   [2017-04-24 23:56:19,614] - G1 Old Generation - last duration(ms): 1381, total duration(ms): 7230, number of calls: 5
+DEBUG   [2017-04-24 23:56:19,614] - G1 Young Generation - last duration(ms): 60, total duration(ms): 3244, number of calls: 30
+DEBUG   [2017-04-24 23:56:19,615] - G1 Young Generation - last duration(ms): 1, total duration(ms): 3245, number of calls: 31
+DEBUG   [2017-04-24 23:56:19,615] - G1 Old Generation - last duration(ms): 1359, total duration(ms): 8589, number of calls: 6
+DEBUG   [2017-04-24 23:56:19,615] - G1 Old Generation - last duration(ms): 1347, total duration(ms): 9936, number of calls: 7
+DEBUG   [2017-04-24 23:56:19,616] - G1 Young Generation - last duration(ms): 1, total duration(ms): 3246, number of calls: 32
+DEBUG   [2017-04-24 23:56:19,616] - G1 Young Generation - last duration(ms): 2, total duration(ms): 3248, number of calls: 33
+DEBUG   [2017-04-24 23:56:19,616] - G1 Old Generation - last duration(ms): 1388, total duration(ms): 11324, number of calls: 8
+DEBUG   [2017-04-24 23:56:19,617] - G1 Old Generation - last duration(ms): 1366, total duration(ms): 12690, number of calls: 9
+DEBUG   [2017-04-24 23:56:19,617] - G1 Young Generation - last duration(ms): 1, total duration(ms): 3249, number of calls: 34
+DEBUG   [2017-04-24 23:56:19,618] - G1 Young Generation - last duration(ms): 1, total duration(ms): 3250, number of calls: 35
+DEBUG   [2017-04-24 23:56:19,618] - G1 Young Generation - last duration(ms): 0, total duration(ms): 3250, number of calls: 36
+DEBUG   [2017-04-24 23:56:19,619] - G1 Old Generation - last duration(ms): 259, total duration(ms): 12949, number of calls: 10

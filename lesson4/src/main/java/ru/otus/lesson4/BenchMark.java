@@ -20,6 +20,7 @@ public class BenchMark {
             for (int i = 0; i < cs; i++) {
                 objectsArray[i] = new String(new char[0]);
             }
+            logger.debug("Benchmark - trying to add new chunk with " + cs + " objects");
             Collections.addAll(objectsList, objectsArray);
             try {
                 Thread.sleep(sleepTimeout.getTimeout());

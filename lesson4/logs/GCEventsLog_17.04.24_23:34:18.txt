@@ -1,0 +1,54 @@
+DEBUG   [2017-04-24 23:34:18,795] - JVM run with explicitly specified Garbage Collectors: SerialGC 
+DEBUG   [2017-04-24 23:34:18,796] - Registred listener for Copy
+DEBUG   [2017-04-24 23:34:18,797] - Registred listener for MarkSweepCompact
+DEBUG   [2017-04-24 23:34:18,825] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:34:29,149] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:34:29,202] - Copy - last duration(ms): 249, total duration(ms): 249, number of calls: 1
+DEBUG   [2017-04-24 23:34:39,185] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:34:49,514] - Copy - last duration(ms): 288, total duration(ms): 537, number of calls: 2
+DEBUG   [2017-04-24 23:34:49,517] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:34:59,550] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:35:09,849] - Copy - last duration(ms): 269, total duration(ms): 806, number of calls: 3
+DEBUG   [2017-04-24 23:35:09,853] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:35:19,876] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:35:30,679] - Copy - last duration(ms): 0, total duration(ms): 806, number of calls: 4
+DEBUG   [2017-04-24 23:35:30,680] - MarkSweepCompact - last duration(ms): 766, total duration(ms): 766, number of calls: 1
+DEBUG   [2017-04-24 23:35:30,687] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:35:40,705] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:35:51,575] - Copy - last duration(ms): 0, total duration(ms): 806, number of calls: 5
+DEBUG   [2017-04-24 23:35:51,576] - MarkSweepCompact - last duration(ms): 832, total duration(ms): 1598, number of calls: 2
+DEBUG   [2017-04-24 23:35:51,578] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:35:53,256] - MarkSweepCompact - last duration(ms): 742, total duration(ms): 2340, number of calls: 3
+DEBUG   [2017-04-24 23:35:53,257] - MarkSweepCompact - last duration(ms): 934, total duration(ms): 3274, number of calls: 4
+DEBUG   [2017-04-24 23:36:04,245] - MarkSweepCompact - last duration(ms): 838, total duration(ms): 4112, number of calls: 5
+DEBUG   [2017-04-24 23:36:04,350] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:36:15,270] - MarkSweepCompact - last duration(ms): 851, total duration(ms): 4963, number of calls: 6
+DEBUG   [2017-04-24 23:36:16,259] - MarkSweepCompact - last duration(ms): 847, total duration(ms): 5810, number of calls: 7
+DEBUG   [2017-04-24 23:36:17,316] - MarkSweepCompact - last duration(ms): 1016, total duration(ms): 6826, number of calls: 8
+DEBUG   [2017-04-24 23:36:18,165] - MarkSweepCompact - last duration(ms): 836, total duration(ms): 7662, number of calls: 9
+DEBUG   [2017-04-24 23:36:19,014] - MarkSweepCompact - last duration(ms): 845, total duration(ms): 8507, number of calls: 10
+DEBUG   [2017-04-24 23:36:52,220] - MarkSweepCompact - last duration(ms): 827, total duration(ms): 9334, number of calls: 11
+DEBUG   [2017-04-24 23:36:52,220] - MarkSweepCompact - last duration(ms): 824, total duration(ms): 10158, number of calls: 12
+DEBUG   [2017-04-24 23:36:52,221] - MarkSweepCompact - last duration(ms): 841, total duration(ms): 10999, number of calls: 13
+DEBUG   [2017-04-24 23:36:52,221] - MarkSweepCompact - last duration(ms): 825, total duration(ms): 11824, number of calls: 14
+DEBUG   [2017-04-24 23:36:52,222] - MarkSweepCompact - last duration(ms): 834, total duration(ms): 12658, number of calls: 15
+DEBUG   [2017-04-24 23:36:52,223] - MarkSweepCompact - last duration(ms): 834, total duration(ms): 13492, number of calls: 16
+DEBUG   [2017-04-24 23:36:52,223] - MarkSweepCompact - last duration(ms): 829, total duration(ms): 14321, number of calls: 17
+DEBUG   [2017-04-24 23:36:52,224] - MarkSweepCompact - last duration(ms): 851, total duration(ms): 15172, number of calls: 18
+DEBUG   [2017-04-24 23:36:52,224] - MarkSweepCompact - last duration(ms): 830, total duration(ms): 16002, number of calls: 19
+DEBUG   [2017-04-24 23:36:52,224] - MarkSweepCompact - last duration(ms): 834, total duration(ms): 16836, number of calls: 20
+DEBUG   [2017-04-24 23:36:52,229] - MarkSweepCompact - last duration(ms): 834, total duration(ms): 17670, number of calls: 21
+DEBUG   [2017-04-24 23:36:52,230] - MarkSweepCompact - last duration(ms): 830, total duration(ms): 18500, number of calls: 22
+DEBUG   [2017-04-24 23:36:52,230] - MarkSweepCompact - last duration(ms): 842, total duration(ms): 19342, number of calls: 23
+DEBUG   [2017-04-24 23:36:52,231] - MarkSweepCompact - last duration(ms): 875, total duration(ms): 20217, number of calls: 24
+DEBUG   [2017-04-24 23:36:52,231] - MarkSweepCompact - last duration(ms): 841, total duration(ms): 21058, number of calls: 25
+DEBUG   [2017-04-24 23:36:52,232] - MarkSweepCompact - last duration(ms): 1062, total duration(ms): 22120, number of calls: 26
+DEBUG   [2017-04-24 23:36:52,232] - MarkSweepCompact - last duration(ms): 838, total duration(ms): 22958, number of calls: 27
+DEBUG   [2017-04-24 23:36:52,232] - MarkSweepCompact - last duration(ms): 832, total duration(ms): 23790, number of calls: 28
+DEBUG   [2017-04-24 23:36:52,233] - MarkSweepCompact - last duration(ms): 831, total duration(ms): 24621, number of calls: 29
+DEBUG   [2017-04-24 23:36:52,233] - MarkSweepCompact - last duration(ms): 828, total duration(ms): 25449, number of calls: 30
+DEBUG   [2017-04-24 23:36:52,234] - MarkSweepCompact - last duration(ms): 829, total duration(ms): 26278, number of calls: 31
+DEBUG   [2017-04-24 23:36:52,234] - MarkSweepCompact - last duration(ms): 815, total duration(ms): 27093, number of calls: 32
+DEBUG   [2017-04-24 23:36:52,235] - MarkSweepCompact - last duration(ms): 827, total duration(ms): 27920, number of calls: 33
+DEBUG   [2017-04-24 23:36:52,235] - MarkSweepCompact - last duration(ms): 859, total duration(ms): 28779, number of calls: 34
+DEBUG   [2017-04-24 23:36:52,235] - MarkSweepCompact - last duration(ms): 200, total duration(ms): 28979, number of calls: 35

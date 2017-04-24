@@ -1,0 +1,48 @@
+DEBUG   [2017-04-24 23:28:48,054] - JVM run with explicitly specified Garbage Collectors: ConcMarkSweepGC ParNewGC 
+DEBUG   [2017-04-24 23:28:48,072] - Registred listener for ParNew
+DEBUG   [2017-04-24 23:28:48,073] - Registred listener for ConcurrentMarkSweep
+DEBUG   [2017-04-24 23:28:48,101] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:28:59,094] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:28:59,101] - ParNew - last duration(ms): 874, total duration(ms): 874, number of calls: 1
+DEBUG   [2017-04-24 23:29:09,128] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:29:19,485] - ParNew - last duration(ms): 321, total duration(ms): 1195, number of calls: 2
+DEBUG   [2017-04-24 23:29:19,487] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:29:29,521] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:29:39,850] - ParNew - last duration(ms): 284, total duration(ms): 1479, number of calls: 3
+DEBUG   [2017-04-24 23:29:39,857] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:29:45,551] - ParNew - last duration(ms): 119, total duration(ms): 1598, number of calls: 4
+DEBUG   [2017-04-24 23:29:45,712] - ConcurrentMarkSweep - last duration(ms): 5877, total duration(ms): 5877, number of calls: 1
+DEBUG   [2017-04-24 23:29:48,138] - ParNew - last duration(ms): 63, total duration(ms): 1661, number of calls: 5
+DEBUG   [2017-04-24 23:29:48,307] - ConcurrentMarkSweep - last duration(ms): 595, total duration(ms): 6472, number of calls: 2
+DEBUG   [2017-04-24 23:29:49,889] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:29:51,011] - ParNew - last duration(ms): 0, total duration(ms): 1661, number of calls: 6
+DEBUG   [2017-04-24 23:29:51,179] - ConcurrentMarkSweep - last duration(ms): 871, total duration(ms): 7343, number of calls: 3
+DEBUG   [2017-04-24 23:29:53,905] - ParNew - last duration(ms): 0, total duration(ms): 1661, number of calls: 7
+DEBUG   [2017-04-24 23:29:54,076] - ConcurrentMarkSweep - last duration(ms): 897, total duration(ms): 8240, number of calls: 4
+DEBUG   [2017-04-24 23:29:56,774] - ParNew - last duration(ms): 0, total duration(ms): 1661, number of calls: 8
+DEBUG   [2017-04-24 23:29:56,944] - ConcurrentMarkSweep - last duration(ms): 868, total duration(ms): 9108, number of calls: 5
+DEBUG   [2017-04-24 23:29:59,652] - ParNew - last duration(ms): 0, total duration(ms): 1661, number of calls: 9
+DEBUG   [2017-04-24 23:29:59,822] - ConcurrentMarkSweep - last duration(ms): 878, total duration(ms): 9986, number of calls: 6
+DEBUG   [2017-04-24 23:30:01,099] - ParNew - last duration(ms): 0, total duration(ms): 1661, number of calls: 10
+DEBUG   [2017-04-24 23:30:01,100] - ConcurrentMarkSweep - last duration(ms): 1051, total duration(ms): 11037, number of calls: 7
+DEBUG   [2017-04-24 23:30:01,103] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:30:02,051] - ParNew - last duration(ms): 0, total duration(ms): 1661, number of calls: 11
+DEBUG   [2017-04-24 23:30:02,244] - ConcurrentMarkSweep - last duration(ms): 1269, total duration(ms): 12306, number of calls: 8
+DEBUG   [2017-04-24 23:30:05,004] - ParNew - last duration(ms): 0, total duration(ms): 1661, number of calls: 12
+DEBUG   [2017-04-24 23:30:05,200] - ConcurrentMarkSweep - last duration(ms): 954, total duration(ms): 13260, number of calls: 9
+DEBUG   [2017-04-24 23:30:08,018] - ParNew - last duration(ms): 0, total duration(ms): 1661, number of calls: 13
+DEBUG   [2017-04-24 23:30:08,212] - ConcurrentMarkSweep - last duration(ms): 1010, total duration(ms): 14270, number of calls: 10
+DEBUG   [2017-04-24 23:30:10,973] - ParNew - last duration(ms): 0, total duration(ms): 1661, number of calls: 14
+DEBUG   [2017-04-24 23:30:11,168] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:30:11,172] - ConcurrentMarkSweep - last duration(ms): 960, total duration(ms): 15230, number of calls: 11
+DEBUG   [2017-04-24 23:30:14,066] - ParNew - last duration(ms): 0, total duration(ms): 1661, number of calls: 15
+DEBUG   [2017-04-24 23:30:14,260] - ConcurrentMarkSweep - last duration(ms): 1086, total duration(ms): 16316, number of calls: 12
+DEBUG   [2017-04-24 23:30:17,066] - ParNew - last duration(ms): 0, total duration(ms): 1661, number of calls: 16
+DEBUG   [2017-04-24 23:30:17,259] - ConcurrentMarkSweep - last duration(ms): 999, total duration(ms): 17315, number of calls: 13
+DEBUG   [2017-04-24 23:30:20,130] - ParNew - last duration(ms): 0, total duration(ms): 1661, number of calls: 17
+DEBUG   [2017-04-24 23:30:20,323] - ConcurrentMarkSweep - last duration(ms): 1063, total duration(ms): 18378, number of calls: 14
+DEBUG   [2017-04-24 23:30:22,658] - ParNew - last duration(ms): 0, total duration(ms): 1661, number of calls: 18
+DEBUG   [2017-04-24 23:30:22,658] - ConcurrentMarkSweep - last duration(ms): 1147, total duration(ms): 19525, number of calls: 15
+DEBUG   [2017-04-24 23:30:23,258] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:30:25,695] - ConcurrentMarkSweep - last duration(ms): 1260, total duration(ms): 20785, number of calls: 16
+DEBUG   [2017-04-24 23:30:25,695] - ConcurrentMarkSweep - last duration(ms): 1175, total duration(ms): 21960, number of calls: 17

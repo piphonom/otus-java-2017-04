@@ -1,0 +1,21 @@
+DEBUG   [2017-04-24 23:46:03,551] - JVM run with explicitly specified Garbage Collectors: ParallelGC ParallelOldGC 
+DEBUG   [2017-04-24 23:46:03,566] - Registred listener for PS Scavenge
+DEBUG   [2017-04-24 23:46:03,567] - Registred listener for PS MarkSweep
+DEBUG   [2017-04-24 23:46:03,598] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:46:13,815] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:46:13,824] - PS Scavenge - last duration(ms): 137, total duration(ms): 137, number of calls: 1
+DEBUG   [2017-04-24 23:46:23,875] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:46:34,047] - PS Scavenge - last duration(ms): 138, total duration(ms): 275, number of calls: 2
+DEBUG   [2017-04-24 23:46:34,052] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:46:44,071] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:46:54,228] - PS Scavenge - last duration(ms): 133, total duration(ms): 408, number of calls: 3
+DEBUG   [2017-04-24 23:46:54,238] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:47:04,276] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:47:07,607] - PS Scavenge - last duration(ms): 245, total duration(ms): 653, number of calls: 4
+DEBUG   [2017-04-24 23:47:07,610] - PS MarkSweep - last duration(ms): 3080, total duration(ms): 3080, number of calls: 1
+DEBUG   [2017-04-24 23:47:17,638] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:47:29,268] - PS MarkSweep - last duration(ms): 1615, total duration(ms): 4695, number of calls: 2
+DEBUG   [2017-04-24 23:47:29,273] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:47:39,305] - Benchmark - trying to add new chunk with 1000000 objects
+DEBUG   [2017-04-24 23:47:42,974] - PS MarkSweep - last duration(ms): 1767, total duration(ms): 6462, number of calls: 3
+DEBUG   [2017-04-24 23:47:42,974] - PS MarkSweep - last duration(ms): 1898, total duration(ms): 8360, number of calls: 4

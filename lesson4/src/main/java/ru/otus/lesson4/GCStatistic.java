@@ -30,8 +30,8 @@ public class GCStatistic {
     }
 
     public void logStatistic() {
-        logger.debug(gcName + ": last duration " + lastDuration +
-                ", total duration: " + totalDuration +
+        logger.debug(gcName + " - last duration(ms): " + lastDuration +
+                ", total duration(ms): " + totalDuration +
                 ", number of calls: " + numberOfCalls);
     }
 }
