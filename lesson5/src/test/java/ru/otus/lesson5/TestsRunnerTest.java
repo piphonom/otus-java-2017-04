@@ -1,6 +1,5 @@
 package ru.otus.lesson5;
 
-import junit.textui.TestRunner;
 import ru.otus.lesson5.testunit.TestsRunner;
 import org.junit.Test;
 import org.junit.Assert;

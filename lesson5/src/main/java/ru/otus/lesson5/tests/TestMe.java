@@ -1,13 +1,11 @@
-package ru.otus.lesson5;
+package ru.otus.lesson5.tests;
 
-import ru.otus.lesson5.testunit.After;
-import ru.otus.lesson5.testunit.Assert;
-import ru.otus.lesson5.testunit.Before;
-import ru.otus.lesson5.testunit.Test;
+import ru.otus.lesson5.testunit.*;
 
 /**
  * Created by piphonom on 09.05.17.
  */
+@TestClass
 public class TestMe {
     @Before
     void before() {

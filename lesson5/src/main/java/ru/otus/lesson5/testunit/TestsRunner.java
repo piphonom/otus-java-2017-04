@@ -1,8 +1,18 @@
 package ru.otus.lesson5.testunit;
 
+import org.reflections.Reflections;
+import org.reflections.scanners.ResourcesScanner;
+import org.reflections.scanners.SubTypesScanner;
+import org.reflections.util.ClasspathHelper;
+import org.reflections.util.ConfigurationBuilder;
+import org.reflections.util.FilterBuilder;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by piphonom on 08.05.17.
@@ -14,7 +24,9 @@ public class TestsRunner {
             if (c.isPrimitive()) {
                 Assert.fail("Primitive types can't be tested");
             }
-
+            if (c.getAnnotation(TestClass.class) == null) {
+                continue;
+            }
             Method[] methods = c.getDeclaredMethods();
             Method before = runner.getBeforeMethod(methods);
             Method after = runner.getAfterMethod(methods);
@@ -23,6 +35,20 @@ public class TestsRunner {
                 runner.runTest(c, before, test, after);
             }
         }
+    }
+
+    public static void run(String packageName) {
+        List<ClassLoader> classLoadersList = new LinkedList<ClassLoader>();
+        classLoadersList.add(ClasspathHelper.contextClassLoader());
+        classLoadersList.add(ClasspathHelper.staticClassLoader());
+
+        Reflections reflections = new Reflections(new ConfigurationBuilder()
+                .setScanners(new SubTypesScanner(false), new ResourcesScanner())
+                .setUrls(ClasspathHelper.forClassLoader(classLoadersList.toArray(new ClassLoader[0])))
+                .filterInputsBy(new FilterBuilder().include(FilterBuilder.prefix(packageName))));
+
+        Set<Class<?>> classes = reflections.getSubTypesOf(Object.class);
+        run(classes.toArray(new Class<?>[classes.size()]));
     }
 
     private Method getBeforeMethod(Method[] methods) {
