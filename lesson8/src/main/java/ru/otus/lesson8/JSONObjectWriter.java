@@ -15,7 +15,7 @@ import java.util.*;
  */
 public class JSONObjectWriter {
 
-    private Map<String, ClassInfo> ClassInfos = new HashMap<>();
+    private static Map<String, ClassInfo> ClassInfos = new HashMap<>();
 
     private JSONObjectWriter() {}
 
@@ -23,7 +23,7 @@ public class JSONObjectWriter {
 
         JSONObjectWriter objectWriter = new JSONObjectWriter();
         JsonObjectBuilder builder = Json.createObjectBuilder();
-        objectWriter.convertObject(/*object.getClass().getSimpleName()*/null, object, builder);
+        objectWriter.convertObject(null, object, builder);
 
         StringWriter stringWriter = new StringWriter();
         JsonWriter writer = Json.createWriter(stringWriter);
@@ -33,8 +33,14 @@ public class JSONObjectWriter {
     }
 
     private void convertObject(String name, Object object, JsonObjectBuilder builder) {
-
+        if (object instanceof Collection<?>) {
+            Object array = normalizeCollection((Collection)object);
+            if (array == null)
+                return;
+            object = array;
+        }
         Class<?> clazz = object.getClass();
+
         if (Modifier.isTransient(clazz.getModifiers()))
             return;
 
@@ -43,6 +49,20 @@ public class JSONObjectWriter {
         } else {
             processSimpleObject(name, object, builder);
         }
+    }
+
+    private Object normalizeCollection(Collection collection) {
+        int length = collection.size();
+        if (length != 0) {
+            Object first = collection.iterator().next();
+            Object array = Array.newInstance(first.getClass(), length);
+            Iterator iterator = collection.iterator();
+            for (int i = 0; i < length; i++) {
+                Array.set(array, i, iterator.next());
+            }
+            return array;
+        }
+        return null;
     }
 
     private void processArrayObject(String name, Object object, JsonObjectBuilder builder) {
@@ -141,15 +161,6 @@ public class JSONObjectWriter {
                     } else {
                         builder.add(name, objectBuilder);
                     }
-
-                        /*
-                        StringWriter stringWriter = new StringWriter();
-                        JsonWriter writer = Json.createWriter(stringWriter);
-
-                        writer.writeObject(tmpObject);
-                        writer.close();
-                        System.out.println(stringWriter.getBuffer().toString());
-                        */
                 }
                 break;
         }
