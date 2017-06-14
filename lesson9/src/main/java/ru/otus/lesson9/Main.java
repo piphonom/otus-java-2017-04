@@ -1,40 +1,34 @@
 package ru.otus.lesson9;
 
-import ru.otus.lesson9.connectors.MySqlSimpleConnector;
-import ru.otus.lesson9.dao.DbService;
-import ru.otus.lesson9.datasets.User;
+import ru.otus.lesson9.base.DBService;
+import ru.otus.lesson9.base.datasets.UserDataSet;
+import ru.otus.lesson9.implementations.myorm.DBServiceImpl;
+import ru.otus.lesson9.myorm.connectors.MySqlSimpleConnector;
+
+import java.util.List;
 
 /**
  * Created by piphonom
  */
 public class Main {
     public static void main(String[] args) {
-        try(DbService dbService = DbService.newInstance(MySqlSimpleConnector::new)) {
-            User firstUser = new User("Michael Jackson", 25);
-            if (dbService.save(firstUser)) {
-                System.out.println("Michael Jackson is saved");
-            }
-            User secondUser = new User("Bob Marley", 27);
-            if (dbService.save(secondUser)) {
-                System.out.println("Bob Marley is saved");
-            }
-            User dbUser = dbService.load(1, User.class);
-            System.out.println("User from DB - id: " + dbUser.getId() + ", name: " + dbUser.getName() + ", age: " + dbUser.getAge());
-
-            dbUser.setAge(dbUser.getAge() + 4);
-            if (dbService.update(1, dbUser)) {
-                System.out.println(dbUser.getName() + " is updated");
-            }
-
-            dbUser = dbService.load(1, User.class);
-            System.out.println("User from DB - id: " + dbUser.getId() + ", name: " + dbUser.getName() + ", age: " + dbUser.getAge());
-
-            dbUser = dbService.load(2, User.class);
-            System.out.println("User from DB - id: " + dbUser.getId() + ", name: " + dbUser.getName() + ", age: " + dbUser.getAge());
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        DBService dbService = new DBServiceImpl(MySqlSimpleConnector::new);
+        UserDataSet firstUser = new UserDataSet("Michael Jackson", 25);
+        if (dbService.save(firstUser)) {
+            System.out.println("Michael Jackson is saved");
         }
+        UserDataSet secondUser = new UserDataSet("Bob Marley", 27);
+        if (dbService.save(secondUser)) {
+            System.out.println("Bob Marley is saved");
+        }
+        UserDataSet dbUser = dbService.read(1);
+        System.out.println("UserDataSet from DB - id: " + dbUser.getId() + ", name: " + dbUser.getName() + ", age: " + dbUser.getAge());
+
+        dbUser = dbService.readByName("Bob Marley");
+        System.out.println("UserDataSet from DB - id: " + dbUser.getId() + ", name: " + dbUser.getName() + ", age: " + dbUser.getAge());
+
+        List<UserDataSet> users = dbService.readAll();
+        System.out.println("All DB contents:");
+        users.forEach(user -> System.out.println("UserDataSet from DB - id: " + user.getId() + ", name: " + user.getName() + ", age: " + user.getAge()));
     }
 }

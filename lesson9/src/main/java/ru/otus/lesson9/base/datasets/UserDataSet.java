@@ -1,8 +1,7 @@
-package ru.otus.lesson9.datasets;
+package ru.otus.lesson9.base.datasets;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -10,11 +9,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "User")
-public class User extends DataSet {
-
-    @Id
-    @Column(name = "id")
-    int ident;
+public class UserDataSet extends DataSet {
 
     @Column(name = "name")
     String fullName;
@@ -22,12 +17,12 @@ public class User extends DataSet {
     @Column(name = "age")
     int totalAge;
 
-    public User() {
+    public UserDataSet() {
         this.fullName = null;
         this.totalAge = 0;
     }
 
-    public User(String name, int age) {
+    public UserDataSet(String name, int age) {
         this.fullName = name;
         this.totalAge = age;
     }
@@ -47,9 +42,4 @@ public class User extends DataSet {
     public int getAge() {
         return totalAge;
     }
-
-    public int getId() {
-        return ident;
-    }
-
 }

@@ -1,4 +1,4 @@
-package ru.otus.lesson9.connectors;
+package ru.otus.lesson9.myorm.connectors;
 
 import org.h2.tools.DeleteDbFiles;
 

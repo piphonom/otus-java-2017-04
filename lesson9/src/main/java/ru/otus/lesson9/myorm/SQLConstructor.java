@@ -1,10 +1,10 @@
-package ru.otus.lesson9.helpers;
+package ru.otus.lesson9.myorm;
 
 /**
  * Created by piphonom
  */
 
-import ru.otus.lesson9.datasets.DataSet;
+import ru.otus.lesson9.base.datasets.DataSet;
 
 import javax.persistence.Table;
 import javax.persistence.Column;
@@ -28,7 +28,7 @@ public class SQLConstructor {
                     StringBuilder tmpBuilder = new StringBuilder();
                     Column columnAnno = field.getAnnotation(Column.class);
                     if(columnAnno != null) {
-                        tmpBuilder.append(columnAnno.name() != "" ? columnAnno.name() : field.getName());
+                        tmpBuilder.append(columnAnno.name().equals("") ? field.getName() : columnAnno.name());
                         tmpBuilder.append("=\'").append(field.get(dataSet)).append("\',");
                         setBuilder.append(tmpBuilder);
                     }
@@ -42,19 +42,43 @@ public class SQLConstructor {
         return setBuilder.toString().replace(",;", "");
     }
 
-    private static <T extends DataSet> String constructWhereIdSubrequest(int idValue, Class<T> clazz) {
+    private static String constructWhereIdSubrequest(int idValue, Class<? extends DataSet> clazz) {
         StringBuilder whereBuilder = new StringBuilder();
-        List<Field> ids = Arrays.stream(clazz.getDeclaredFields())
+        List<Field> ids = Arrays.stream(clazz.getSuperclass().getDeclaredFields())
                 .filter(field -> field.getAnnotation(Id.class) != null)
                 .collect(Collectors.toList());
         if (ids.size() != 1) {
             return null;
         }
         String idColumnName = ids.get(0).getAnnotation(Column.class).name();
-        if (idColumnName == null)
+        if (idColumnName.equals(""))
             idColumnName = ids.get(0).getName();
         whereBuilder.append(" WHERE ").append(idColumnName).append("=").append(idValue);
         return whereBuilder.toString();
+    }
+
+    private static String constructWhereNameSubrequest(String name, Class<? extends DataSet> clazz) {
+        StringBuilder whereBuilder = new StringBuilder();
+        List<Field> names = Arrays.stream(clazz.getDeclaredFields())
+                .filter(field -> field.getAnnotation(Column.class) != null && field.getAnnotation(Column.class).name().equals("name"))
+                .collect(Collectors.toList());
+        if (names.size() != 1) {
+            return null;
+        }
+        whereBuilder.append(" WHERE ").append("name").append("='").append(name).append("'");
+        return whereBuilder.toString();
+    }
+
+    private static String constructSimpleSelect(Class<? extends DataSet> clazz) {
+        StringBuilder selectBuilder = new StringBuilder();
+        selectBuilder.append("SELECT * FROM ");
+        Table tableAnno = clazz.getAnnotation(Table.class);
+        if (tableAnno == null) {
+            selectBuilder.append(clazz.getSimpleName());
+        } else {
+            selectBuilder.append(tableAnno.name());
+        }
+        return selectBuilder.toString();
     }
 
     public static <T extends DataSet> String constructSimpleInsert(T dataSet) {
@@ -90,16 +114,21 @@ public class SQLConstructor {
         return updateBuilder.toString();
     }
 
-    public static <T extends DataSet> String constructSelectById(int idValue, Class<T> clazz) {
-        StringBuilder selectBuilder = new StringBuilder();
-        selectBuilder.append("SELECT * FROM ");
-        Table tableAnno = clazz.getAnnotation(Table.class);
-        if (tableAnno == null) {
-            selectBuilder.append(clazz.getSimpleName());
-        } else {
-            selectBuilder.append(tableAnno.name());
-        }
+    public static String constructSelectById(int idValue, Class<? extends DataSet> clazz) {
+        StringBuilder selectBuilder = new StringBuilder(constructSimpleSelect(clazz));
         selectBuilder.append(constructWhereIdSubrequest(idValue, clazz)).append(";");
         return selectBuilder.toString();
     }
+
+    public static String constructSelectByName(String name, Class<? extends DataSet> clazz) {
+        StringBuilder selectBuilder = new StringBuilder(constructSimpleSelect(clazz));
+        selectBuilder.append(constructWhereNameSubrequest(name, clazz)).append(";");
+        return selectBuilder.toString();
+    }
+
+    public static String constructSelectAll(Class<? extends DataSet> clazz) {
+        return new StringBuilder(constructSimpleSelect(clazz)).append(";").toString();
+    }
+
+
 }
