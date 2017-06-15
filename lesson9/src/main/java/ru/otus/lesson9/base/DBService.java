@@ -1,5 +1,6 @@
 package ru.otus.lesson9.base;
 
+import ru.otus.lesson9.base.datasets.PhoneDataSet;
 import ru.otus.lesson9.base.datasets.UserDataSet;
 
 import java.util.List;
@@ -17,6 +18,8 @@ public interface DBService {
     UserDataSet readByName(String name);
 
     List<UserDataSet> readAll();
+
+    List<PhoneDataSet> readPhonesByName(String name);
 
     void shutdown();
 }

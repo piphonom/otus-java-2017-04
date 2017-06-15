@@ -1,8 +1,6 @@
 package ru.otus.lesson9.base.datasets;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 
 /**
  * Created by piphonom
@@ -11,9 +9,11 @@ import javax.persistence.MappedSuperclass;
 public abstract class DataSet {
     @Id
     @Column(name = "id")
-    int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     public int getId() {
         return id;
     }
+
 }

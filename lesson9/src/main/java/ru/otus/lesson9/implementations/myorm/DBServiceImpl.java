@@ -1,8 +1,10 @@
 package ru.otus.lesson9.implementations.myorm;
 
 import ru.otus.lesson9.base.DBService;
+import ru.otus.lesson9.base.datasets.PhoneDataSet;
 import ru.otus.lesson9.myorm.connectors.Connector;
 import ru.otus.lesson9.base.datasets.UserDataSet;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -41,6 +43,11 @@ public class DBServiceImpl implements DBService {
     @Override
     public List<UserDataSet> readAll() {
         return dao.readAll();
+    }
+
+    @Override
+    public List<PhoneDataSet> readPhonesByName(String name) {
+        throw new NotImplementedException();
     }
 
     @Override

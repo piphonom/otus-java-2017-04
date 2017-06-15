@@ -1,8 +1,8 @@
 package ru.otus.lesson9.base.datasets;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by piphonom
@@ -12,34 +12,52 @@ import javax.persistence.Table;
 public class UserDataSet extends DataSet {
 
     @Column(name = "name")
-    String fullName;
+    String name;
 
     @Column(name = "age")
-    int totalAge;
+    int age;
 
-    public UserDataSet() {
-        this.fullName = null;
-        this.totalAge = 0;
-    }
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<PhoneDataSet> phones = new ArrayList<>();
+
+    /*
+    @OneToOne(cascade = CascadeType.ALL)
+    private PhoneDataSet phone;
+    */
+
+    public List<PhoneDataSet> getPhones() { return phones; }
+
+
+    public UserDataSet() {}
 
     public UserDataSet(String name, int age) {
-        this.fullName = name;
-        this.totalAge = age;
+        this.name = name;
+        this.age = age;
+    }
+
+    public UserDataSet(String name, List<PhoneDataSet> phones) {
+        this.name = name;
+        this.phones = phones;
     }
 
     public void setName(String name) {
-        this.fullName = name;
+        this.name = name;
     }
 
     public void setAge(int age) {
-        this.totalAge = age;
+        this.age = age;
+    }
+
+    public void setPhone(PhoneDataSet phone) {
+        phones.add(phone);
+        phone.setUser(this);
     }
 
     public String getName() {
-        return fullName;
+        return name;
     }
 
     public int getAge() {
-        return totalAge;
+        return age;
     }
 }

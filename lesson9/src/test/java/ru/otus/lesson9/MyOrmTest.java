@@ -9,15 +9,15 @@ import ru.otus.lesson9.base.datasets.UserDataSet;
 /**
  * Created by piphonom
  */
-public class SaveLoadTest {
+public class MyOrmTest {
     @Test
     public void saveLoadTest() {
         try (ORMService ormService = ORMService.newInstance(H2SimpleConnector::new)){
-            UserDataSet user = new UserDataSet("Sherlock Holms", 33);
+            UserDataSet user = new UserDataSet("Donald Duck", 83);
             boolean result = ormService.save(user);
             Assert.assertEquals(true, result);
 
-            UserDataSet newUser = ormService.read(1, UserDataSet.class);
+            UserDataSet newUser = ormService.read("Donald Duck", UserDataSet.class);
             Assert.assertNotNull(newUser);
 
             Assert.assertEquals(user.getName(), newUser.getName());
