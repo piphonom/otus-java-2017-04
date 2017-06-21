@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ehcache>
+    <defaultCache maxEntriesLocalHeap="0" eternal="false" timeToIdleSeconds="1200" timeToLiveSeconds="1200">
+
+    </defaultCache>
+    <cache name="ru.otus.lesson11.base.datasets.UserDataSet"
+           maxEntriesLocalHeap="10"
+           eternal="false"
+           timeToLiveSeconds="60"
+           timeToIdleSeconds="60">
+           <persistence strategy="localTempSwap"/>
+    </cache>
+    <cache name="ru.otus.lesson11.base.datasets.UserDataSet.phones"
+           maxEntriesLocalHeap="50"
+           eternal="false"
+           timeToLiveSeconds="60"
+           timeToIdleSeconds="60">
+    <persistence strategy="localTempSwap"/>
+    </cache>
+    <cache name="ru.otus.lesson11.base.datasets.PhoneDataSet"
+           maxEntriesLocalHeap="10"
+           eternal="false"
+           timeToLiveSeconds="60"
+           timeToIdleSeconds="60">
+    <persistence strategy="localTempSwap"/>
+    </cache>
+</ehcache>
