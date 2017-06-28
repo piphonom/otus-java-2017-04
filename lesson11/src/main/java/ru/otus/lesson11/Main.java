@@ -18,6 +18,8 @@ public class Main {
         /* My ORM */
         System.out.println("My ORM:");
         DBService dbService = new DBServiceImpl(MySqlSimpleConnector::new);
+
+        /*
         UserDataSet firstUser = new UserDataSet("Michael Jackson", 25);
         if (dbService.save(firstUser)) {
             System.out.println("Michael Jackson is saved");
@@ -36,6 +38,12 @@ public class Main {
         System.out.println("UserDataSet by name - id: " + dbUser.getId() + ", name: " + dbUser.getName() + ", age: " + dbUser.getAge());
 
         dbService.shutdown();
+        */
+
+        while (true) {
+            Thread.sleep(5_000);
+            dbService.printInfo();
+        }
 
         /* Hibernate */
         /*

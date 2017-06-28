@@ -6,6 +6,8 @@ import ru.otus.lesson11.cache.CacheEngine;
 import ru.otus.lesson11.cache.CacheEngineImpl;
 import ru.otus.lesson11.myorm.connectors.Connector;
 import ru.otus.lesson11.base.datasets.UserDataSet;
+import ru.otus.lesson11.webserver.WebServer;
+import sun.misc.Cache;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.List;
@@ -19,6 +21,7 @@ public class DBServiceImpl implements DBService {
     private final int CACHE_SIZE = 10;
     private final int CACHE_IDLE_MS = 1_000;
     private final int CACHE_LIFETIME_MS = 5_000;
+    private WebServer webServer = null;
 
     private final UserDataSetDAO dao;
     CacheEngine<Integer, UserDataSet> idsCache;
@@ -28,6 +31,18 @@ public class DBServiceImpl implements DBService {
         dao = new UserDataSetDAO(connectorFactory);
         idsCache = new CacheEngineImpl<>(CACHE_SIZE, false, CACHE_IDLE_MS, CACHE_LIFETIME_MS);
         namesCache = new CacheEngineImpl<>(CACHE_SIZE, false, CACHE_IDLE_MS, CACHE_LIFETIME_MS);
+        try {
+            webServer =  new WebServer.Builder()
+                .setLogin("admin")
+                .setPassword("nimda")
+                .setPort(8080)
+                .setHandledObject(namesCache)
+                .build();
+
+            webServer.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -81,5 +96,20 @@ public class DBServiceImpl implements DBService {
         dao.close();
         idsCache.dispose();
         namesCache.dispose();
+        if (webServer != null) {
+            try {
+                webServer.stop();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void printInfo() {
+        System.out.println("DBService info:");
+        System.out.println("Cache info:");
+        namesCache.printInfo();
+        System.out.println();
     }
 }

@@ -52,7 +52,7 @@ public class DBServiceHibernateImpl implements DBService {
     @Override
     public boolean save(UserDataSet dataSet) {
         try (Session session = sessionFactory.openSession()) {
-            UserDataSetDAO dao = new UserDataSetDAO(session);
+            UserDataSetDAOHibernate dao = new UserDataSetDAOHibernate(session);
             dao.save(dataSet);
         }
         return true;
@@ -61,7 +61,7 @@ public class DBServiceHibernateImpl implements DBService {
     @Override
     public UserDataSet read(int id) {
         return runInSession(session -> {
-            UserDataSetDAO dao = new UserDataSetDAO(session);
+            UserDataSetDAOHibernate dao = new UserDataSetDAOHibernate(session);
             return dao.read(id);
         });
     }
@@ -69,7 +69,7 @@ public class DBServiceHibernateImpl implements DBService {
     @Override
     public UserDataSet readByName(String name) {
         return runInSession(session -> {
-            UserDataSetDAO dao = new UserDataSetDAO(session);
+            UserDataSetDAOHibernate dao = new UserDataSetDAOHibernate(session);
             return dao.readByName(name);
         });
     }
@@ -77,7 +77,7 @@ public class DBServiceHibernateImpl implements DBService {
     @Override
     public List<UserDataSet> readAll() {
         return runInSession(session -> {
-            UserDataSetDAO dao = new UserDataSetDAO(session);
+            UserDataSetDAOHibernate dao = new UserDataSetDAOHibernate(session);
             return null;
         });
     }
@@ -87,9 +87,14 @@ public class DBServiceHibernateImpl implements DBService {
         sessionFactory.close();
     }
 
+    @Override
+    public void printInfo() {
+
+    }
+
     public List<PhoneDataSet> readPhonesByName(String name) {
         return runInSession(session -> {
-            UserDataSetDAO dao = new UserDataSetDAO(session);
+            UserDataSetDAOHibernate dao = new UserDataSetDAOHibernate(session);
             return dao.readPhonesByUserName(name);
         });
     }

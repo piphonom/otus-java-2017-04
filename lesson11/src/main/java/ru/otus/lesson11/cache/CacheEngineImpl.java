@@ -1,5 +1,9 @@
 package ru.otus.lesson11.cache;
 
+import ru.otus.lesson11.webserver.annotations.WebAccessed;
+import ru.otus.lesson11.webserver.annotations.WebModified;
+import ru.otus.lesson11.webserver.annotations.WebSettings;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
@@ -9,16 +13,22 @@ import java.util.function.Function;
 /**
  * Created by piphonom
  */
+@WebSettings(name = "Cache Engine Settings")
 public class CacheEngineImpl<K, V> implements CacheEngine<K, V> {
 
     private final int EXEC_EXTRA_DELAY_MS = 5;
 
     private final Map<K, Element<V>> elements;
+    @WebAccessed(name = "isEternal")
     private final boolean isEternal;
-    private final long idleTimeout;
-    private final long lifetime;
-    private int hitCount = 0;
-    private int missCount = 0;
+    @WebModified(name = "idleTimeout")
+    private Long idleTimeout;
+    @WebModified(name = "lifetime")
+    private Long lifetime;
+    @WebAccessed(name = "hitCount")
+    private Integer hitCount = 0;
+    @WebAccessed(name = "missCount")
+    private Integer missCount = 0;
     private Timer timer = new Timer();
 
     public CacheEngineImpl(int maxCapacity, boolean isEternal, long idleTimeout, long maxLifetime) {
@@ -75,6 +85,15 @@ public class CacheEngineImpl<K, V> implements CacheEngine<K, V> {
     @Override
     public void dispose() {
         timer.cancel();
+    }
+
+    @Override
+    public void printInfo() {
+        System.out.println("isEternal: " + isEternal);
+        System.out.println("Idle timeout: " + idleTimeout);
+        System.out.println("Life time: " + lifetime);
+        System.out.println("Hit count: " + hitCount);
+        System.out.println("Miss count: " + missCount);
     }
 
     private TimerTask getTimerTask(K key, Function<Element<V>, Long> timeFunction) {

@@ -21,5 +21,7 @@ public interface DBService {
 
     List<PhoneDataSet> readPhonesByName(String name);
 
+    void printInfo();
+
     void shutdown();
 }

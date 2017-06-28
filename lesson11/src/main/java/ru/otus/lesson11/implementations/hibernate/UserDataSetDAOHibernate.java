@@ -12,10 +12,10 @@ import javax.persistence.criteria.Root;
 import javax.persistence.criteria.Subquery;
 import java.util.List;
 
-public class UserDataSetDAO {
+public class UserDataSetDAOHibernate {
     private Session session;
 
-    public UserDataSetDAO(Session session) {
+    public UserDataSetDAOHibernate(Session session) {
         this.session = session;
     }
 
