@@ -18,7 +18,7 @@ public class CacheEngineImpl<K, V> implements CacheEngine<K, V> {
 
     private final int EXEC_EXTRA_DELAY_MS = 5;
 
-    private final Map<K, Element<V>> elements;
+    private transient final Map<K, Element<V>> elements;
     @WebAccessed(name = "isEternal")
     private final boolean isEternal;
     @WebModified(name = "idleTimeout")
@@ -29,7 +29,7 @@ public class CacheEngineImpl<K, V> implements CacheEngine<K, V> {
     private Integer hitCount = 0;
     @WebAccessed(name = "missCount")
     private Integer missCount = 0;
-    private Timer timer = new Timer();
+    private transient Timer timer = new Timer();
 
     public CacheEngineImpl(int maxCapacity, boolean isEternal, long idleTimeout, long maxLifetime) {
         elements = new SoftHashMap<>(maxCapacity);

@@ -19,7 +19,7 @@ import java.util.function.Supplier;
 public class DBServiceImpl implements DBService {
 
     private final int CACHE_SIZE = 10;
-    private final int CACHE_IDLE_MS = 1_000;
+    private final int CACHE_IDLE_MS = 5_000;
     private final int CACHE_LIFETIME_MS = 5_000;
     private WebServer webServer = null;
 

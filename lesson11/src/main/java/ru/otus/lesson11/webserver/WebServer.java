@@ -19,6 +19,7 @@ public class WebServer {
 
         context.addServlet(RootServlet.class, "/");
         context.addServlet(new ServletHolder(new SettingsServlet(handledObject, login, password)), "/settings");
+        context.addServlet(new ServletHolder(new AjaxServlet(handledObject)), "/objectupdate");
         server.setHandler(context);
     }
 

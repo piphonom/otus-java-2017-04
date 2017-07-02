@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * Created by piphonom
  */
-class SettingsServlet extends HttpServlet {
+final class SettingsServlet extends HttpServlet {
 
     private String username;
     private String password;

@@ -10,7 +10,7 @@ import java.util.Arrays;
 /**
  * Created by piphonom
  */
-class WebToObjectMapper {
+final class WebToObjectMapper {
     public static void map(HttpServletRequest request, Object object) {
         Class<?> clazz = object.getClass();
         WebSettings settingsAnno = clazz.getAnnotation(WebSettings.class);

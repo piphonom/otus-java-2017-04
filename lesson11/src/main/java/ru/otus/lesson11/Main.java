@@ -19,12 +19,12 @@ public class Main {
         System.out.println("My ORM:");
         DBService dbService = new DBServiceImpl(MySqlSimpleConnector::new);
 
-        /*
         UserDataSet firstUser = new UserDataSet("Michael Jackson", 25);
         if (dbService.save(firstUser)) {
             System.out.println("Michael Jackson is saved");
         }
 
+        /*
         UserDataSet dbUser = dbService.read(1);
         System.out.println("UserDataSet by id - id: " + dbUser.getId() + ", name: " + dbUser.getName() + ", age: " + dbUser.getAge());
         dbUser = dbService.readByName("Michael Jackson");
@@ -34,14 +34,14 @@ public class Main {
 
         dbUser = dbService.read(1);
         System.out.println("UserDataSet by id - id: " + dbUser.getId() + ", name: " + dbUser.getName() + ", age: " + dbUser.getAge());
-        dbUser = dbService.readByName("Michael Jackson");
         System.out.println("UserDataSet by name - id: " + dbUser.getId() + ", name: " + dbUser.getName() + ", age: " + dbUser.getAge());
 
         dbService.shutdown();
         */
 
         while (true) {
-            Thread.sleep(5_000);
+            UserDataSet dbUser = dbService.readByName("Michael Jackson");
+            Thread.sleep(3_000);
             dbService.printInfo();
         }
 
