@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+
+    <display-name>lesson13</display-name>
+    <description>Spring MVC</description>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/applicationContext.xml</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
+
+    <servlet>
+        <servlet-name>ajaxServlet</servlet-name>
+        <servlet-class>ru.otus.lesson13.webserver.AjaxServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>
+                classpath*:ru/otus/lesson13/applicationContext.xml
+            </param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ajaxServlet</servlet-name>
+        <url-pattern>/objectupdate</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Settings</servlet-name>
+        <servlet-class>ru.otus.lesson13.webserver.SettingsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Settings</servlet-name>
+        <url-pattern>/settings</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+</web-app>
