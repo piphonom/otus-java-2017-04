@@ -1,12 +1,10 @@
 package ru.otus.lesson13.webserver;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import ru.otus.lesson13.base.DBService;
 import ru.otus.lesson13.base.datasets.UserDataSet;
 import ru.otus.lesson13.cache.CacheEngine;
-import ru.otus.lesson13.cache.CacheEngineImpl;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;

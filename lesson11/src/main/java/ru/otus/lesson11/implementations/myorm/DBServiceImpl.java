@@ -7,8 +7,6 @@ import ru.otus.lesson11.cache.CacheEngineImpl;
 import ru.otus.lesson11.myorm.connectors.Connector;
 import ru.otus.lesson11.base.datasets.UserDataSet;
 import ru.otus.lesson11.webserver.WebServer;
-import sun.misc.Cache;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -88,7 +86,7 @@ public class DBServiceImpl implements DBService {
 
     @Override
     public List<PhoneDataSet> readPhonesByName(String name) {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 
     @Override

@@ -113,8 +113,4 @@ public class CacheEngineImpl<K, V> implements CacheEngine<K, V> {
             }
         };
     }
-
-    public void IncrementHit() {
-        hitCount++;
-    }
 }
