@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>DBService</title>
+    <script src="js/dbservice.js" type="text/javascript"></script>
+</head>
+<body onload="init();">
+<div id="body">
+    <div>
+        <p>
+            Type username to request: <input id="username"/>
+        </p>
+
+        <div style="clear: both"></div>
+    </div>
+
+    <form name="message" action="">
+        <input type="button" name="submitmsg" value="Request" onclick="sendMessage();"/>
+    </form>
+    <div>
+        <p><label><b>Id</b></label>: <span id='dbId'></span></p>
+    </div>
+    <div>
+        <p><label><b>Name</b></label>: <span id='dbUserName'></span></p>
+    </div>
+    <div>
+        <p><label><b>Age</b></label>: <span id='dbAge'></span></p>
+    </div>
+    <div>
+        <p><label><b>Address</b></label>: <span id='dbAddress'></span></p>
+    </div>
+    <div>
+        <p><label><b>Phone</b></label>: <span id='dbPhone'></span></p>
+    </div>
+</body>
+</html>
