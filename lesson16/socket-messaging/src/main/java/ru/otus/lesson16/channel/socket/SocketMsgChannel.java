@@ -82,7 +82,6 @@ public abstract class SocketMsgChannel implements MsgChannel {
         try {
             Msg msg;
             while((msg = (Msg)inputStream.readObject()) != null) {
-                //System.out.println("Message is received");
                 inputMessages.add(msg);
             }
         } catch (IOException | ClassNotFoundException e) {
@@ -92,6 +91,7 @@ public abstract class SocketMsgChannel implements MsgChannel {
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
+        } finally {
             safeStop();
         }
         return true;
@@ -105,7 +105,6 @@ public abstract class SocketMsgChannel implements MsgChannel {
                     msg.setChannelId(id);
                 }
                 outputStream.writeObject(msg);
-                //System.out.println("Message is sent");
             }
         } catch (InterruptedException | IOException e) {
             logger.log(Level.SEVERE, e.getMessage());
@@ -115,6 +114,7 @@ public abstract class SocketMsgChannel implements MsgChannel {
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
+        } finally {
             safeStop();
         }
         return true;

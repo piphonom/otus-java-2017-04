@@ -2,7 +2,6 @@ package ru.otus.lesson16.channel.socket;
 
 import ru.otus.lesson16.channel.MsgChannel;
 
-import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -39,11 +38,6 @@ public class SocketChannelRegistryImpl implements SocketChannelRegistry {
             case CONSUMER:
                 consumers.remove(channel.getId());
                 break;
-        }
-        try {
-            channel.close();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 

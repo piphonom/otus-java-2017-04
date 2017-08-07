@@ -15,9 +15,6 @@ import ru.otus.lesson16.frontend.webserver.servlet.LoginServlet;
  */
 public class WebServer {
 
-    /**
-     * TODO:  fix  STATIC_HTML_SOURCE
-    * */
     private final static String STATIC_HTML_SOURCE = "html";
 
     private final Server server;

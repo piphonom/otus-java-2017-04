@@ -68,5 +68,6 @@ public class ServerSocketMsgChannel extends SocketMsgChannel {
     @Override
     public void safeStop() {
         registry.unregister(this);
+        super.safeStop();
     }
 }
