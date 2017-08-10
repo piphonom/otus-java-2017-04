@@ -10,16 +10,16 @@ import ru.otus.lesson15.messagesystem.Address;
 public class MessageGetUserAnswer extends MessageToFrontend {
 
     UserDataSet user;
-    Object requestor;
+    int requestorId;
 
-    public MessageGetUserAnswer(Address from, Address to, UserDataSet user, Object requestor) {
+    public MessageGetUserAnswer(Address from, Address to, UserDataSet user, int requestorId) {
         super(from, to);
         this.user = user;
-        this.requestor = requestor;
+        this.requestorId = requestorId;
     }
 
     @Override
     public void exec(FrontendMessageService frontendService) {
-        frontendService.sendUser(user, requestor);
+        frontendService.sendUser(user, requestorId);
     }
 }

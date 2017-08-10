@@ -14,19 +14,19 @@ public class MessageGetUser extends MessageToDB {
 
     private final MessageSystem messageSystem;
     private final String userName;
-    Object requestor;
+    int requestorId;
 
-    public MessageGetUser(Address from, Address to, MessageSystem messageSystem, String userName, Object requestor) {
+    public MessageGetUser(Address from, Address to, MessageSystem messageSystem, String userName, int requestorId) {
         super(from, to);
         this.messageSystem = messageSystem;
         this.userName = userName;
-        this.requestor = requestor;
+        this.requestorId = requestorId;
     }
 
     @Override
     public void exec(DBMessageService dbMessageService) {
         UserDataSet user = dbMessageService.getUserByName(userName);
-        Message answer = new MessageGetUserAnswer(getTo(), getFrom(), user, requestor);
+        Message answer = new MessageGetUserAnswer(getTo(), getFrom(), user, requestorId);
         messageSystem.sendMessage(answer);
     }
 }

@@ -10,5 +10,5 @@ public interface FrontendMessageService {
 
     void handleRequest(String name, Object requestor);
 
-    void sendUser(UserDataSet user, Object requestor);
+    void sendUser(UserDataSet user, int requestorId);
 }
